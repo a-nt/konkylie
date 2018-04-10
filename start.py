@@ -13,11 +13,11 @@ global shake
 global volume
 global playAudio
 
-startvalue = 0.5
-shake = startvalue
+startValue = 0.5
+shake = startValue
 
-starvolume = 0.0
-volume = startvolume
+startVolume = 0.0
+volume = startVolume
 
 global timer
 timer = 10
@@ -97,7 +97,7 @@ while True:
 		global playAudio
 		if event.action == 'pressed':
 			if event.direction == 'middle':
-				shake = startvalue
+				shake = startValue
 				print shake
 				print mixer.music.get_volume()
 				playAudio = not playAudio
