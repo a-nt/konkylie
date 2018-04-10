@@ -16,7 +16,7 @@ mixer.init()
 mixer.music.load('crowd-cheering.mp3')
 mixer.music.play()
 
-playAudio = false
+playAudio = False
 
 # do shit
 
@@ -41,12 +41,13 @@ while True:
 
 	def change(event):
 		global shake
+		global volume
 		if event.action == 'pressed':
 			if event.direction == 'middle':
 				shake = startvalue
 				print shake
 				print mixer.music.get_volume()
-				volume = !volume
+				volume = not volume
 
 			if event.direction == 'up':
 				shake += 0.01
@@ -57,14 +58,14 @@ while True:
 
 	sense.stick.direction_any = change
 
-	global volume
 	audioVolume = mixer.music.get_volume()
 
 	def fadeAudio():
+		global volume
 		while playAudio:
 			while audioVolume < 0.9:
 				volume += 0.01
-		while !playAudio:
+		while not playAudio:
 			while audioVolume > 0.0:
 				volume -= 0.01
 
