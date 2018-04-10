@@ -29,16 +29,19 @@ mixer.music.play(loops=-1, start=0.0)
 
 playAudio = False
 
+
+# global timer
+def stopAudio():
+	playAudio = False
+	#t.start()
+t = threading.Timer(3.0, stopAudio)
+t.start()
+
+
+
 # do shit
 
 while True:
-
-	# global timer
-	def stopAudio():
-		playAudio = False
-		#t.start()
-	t = threading.Timer(3.0, stopAudio)
-	t.start()
 
 	#global playAudio
 
@@ -59,6 +62,7 @@ while True:
 
 	else:
 		sense.clear()
+		t.start()
 
 
 	# FADE FUNCTION
