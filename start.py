@@ -60,8 +60,9 @@ while True:
 				print shake
 				print mixer.music.get_volume()
 				playAudio = not playAudio
-				fadeAudio()
-				mixer.music.set_volume(volume)
+				#fadeAudio()
+				#mixer.music.set_volume(volume)
+				print playAudio
 
 			if event.direction == 'up':
 				shake += 0.01
@@ -71,4 +72,3 @@ while True:
 				print shake
 
 	sense.stick.direction_any = change
-	print playAudio
