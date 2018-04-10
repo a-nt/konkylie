@@ -52,14 +52,6 @@ while True:
 	else:
 		sense.clear()
 
-	# TIMER
-	while timer > 0:
-		print timer
-		timer = timer - 1
-		if timer == 0:
-			playAudio = False
-			print playAudio
-
 
 
 	# FADE FUNCTION
@@ -114,3 +106,13 @@ while True:
 
 	sense.stick.direction_any = change
 	mixer.music.set_volume(volume)
+
+
+
+# TIMER
+while timer > 0:
+	print timer
+	timer = timer - 1
+	if timer == 0:
+		playAudio = False
+		print playAudio
