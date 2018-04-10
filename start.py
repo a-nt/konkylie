@@ -48,10 +48,11 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		timer = 2000
+		#timer = 2000
 
 	else:
 		sense.clear()
+		playAudio = False
 
 
 	# TIMER FUNCTION
@@ -75,7 +76,7 @@ while True:
 				#print volume
 		elif not playAudio:
 			if audioVolume > 0.0:
-				volume -= 0.01
+				volume -= 0.001
 				#print volume
 
 		# make sure volume stays in range
@@ -113,4 +114,3 @@ while True:
 
 	sense.stick.direction_any = change
 	mixer.music.set_volume(volume)
-	time.sleep(0.1)
