@@ -53,6 +53,7 @@ while True:
 
 
 	def timeOut(n):
+		global playAudio
 		while n > 0:
 			print n
 			n = n - 1
