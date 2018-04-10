@@ -55,7 +55,7 @@ while True:
 	# TIMER
 	while timer > 0:
 		print timer
-		timer = timer - 0.1
+		timer = timer - 1
 		if timer == 0:
 			playAudio = False
 			print playAudio
