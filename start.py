@@ -9,7 +9,7 @@ black = (0,0,0)
 global shake
 global volume
 global playAudio
-startvalue = 0.1
+startvalue = 0.5
 shake = startvalue
 volume = startvalue
 
@@ -44,12 +44,22 @@ while True:
 	def fadeAudio():
 		audioVolume = mixer.music.get_volume()
 		global volume
-		while playAudio:
-			while audioVolume < 0.9:
+		
+		# while playAudio:
+		# 	while audioVolume < 0.9:
+		# 		volume += 0.01
+		# while not playAudio:
+		# 	while audioVolume > 0.0:
+		# 		volume -= 0.01
+
+		if playAudio:
+			if audioVolume < 0.9:
 				volume += 0.01
-		while not playAudio:
-			while audioVolume > 0.0:
+		elif not playAudio:
+			if audioVolume > 0.0:
 				volume -= 0.01
+
+	fadeAudio()
 
 
 
@@ -64,7 +74,6 @@ while True:
 				print shake
 				print mixer.music.get_volume()
 				playAudio = not playAudio
-				fadeAudio()
 				#mixer.music.set_volume(volume)
 				print playAudio
 
