@@ -1,6 +1,6 @@
 from sense_hat import SenseHat
 from pygame import mixer
-import time
+from threading
 
 # init sense hat
 sense = SenseHat()
@@ -33,6 +33,12 @@ playAudio = False
 
 while True:
 
+	# global timer
+	def stopAudio():
+		playAudio = False
+		print playAudio
+	t = Timer(3.0, stopAudio)
+
 	#global playAudio
 
 	acceleration = sense.get_accelerometer_raw()
@@ -47,10 +53,12 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		timer = 200
+		t.cancel()
+		#timer = 2000
 
 	else:
 		sense.clear()
+		t.start()
 
 
 	# FADE FUNCTION
@@ -77,12 +85,14 @@ while True:
 
 
 	# TIMER
-	while timer > 0:
-		print timer
-		timer = timer - 1
-		if timer == 0:
-			playAudio = False
-			print playAudio
+	# while timer > 0:
+	# 	print timer
+	# 	timer = timer - 1
+	# 	if timer == 0:
+	# 		playAudio = False
+	# 		print playAudio
+
+
 
 
 
