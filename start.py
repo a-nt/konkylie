@@ -7,6 +7,7 @@ sense = SenseHat()
 white = (255,255,255)
 black = (0,0,0)
 global shake
+global volume
 startvalue = 0.1
 shake = startvalue
 
@@ -15,9 +16,12 @@ mixer.init()
 mixer.music.load('crowd-cheering.mp3')
 mixer.music.play()
 
+playAudio = false
+
 # do shit
 
 while True:
+
 
 	acceleration = sense.get_accelerometer_raw()
 	x = acceleration['x']
@@ -42,6 +46,8 @@ while True:
 				shake = startvalue
 				print shake
 				print mixer.music.get_volume()
+				volume = !volume
+
 			if event.direction == 'up':
 				shake += 0.01
 				print shake
@@ -50,3 +56,17 @@ while True:
 				print shake
 
 	sense.stick.direction_any = change
+
+	global volume
+	audioVolume = mixer.music.get_volume()
+
+	def fadeAudio():
+		while playAudio:
+			while audioVolume < 0.9:
+				volume += 0.01
+		while !playAudio:
+			while audioVolume > 0.0:
+				volume -= 0.01
+
+	fadeAudio()
+	mixer.music.set_volume(volume)
