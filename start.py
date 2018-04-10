@@ -1,17 +1,26 @@
 from sense_hat import SenseHat
 from pygame import mixer
+import time
 
 # init sense hat
 sense = SenseHat()
 
 white = (255,255,255)
 black = (0,0,0)
+
+
 global shake
 global volume
 global playAudio
+
 startvalue = 0.5
 shake = startvalue
-volume = startvalue
+
+starvolume = 0.0
+volume = startvolume
+
+global timer
+timer = 10
 
 # init audio
 mixer.init()
@@ -36,9 +45,22 @@ while True:
 
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
+		playAudio = True
+		timer = 30
+
 	else:
 		sense.clear()
 
+
+	def timeOut(n):
+		while n > 0:
+			print n
+			n = n - 1
+			if n == 0:
+			print("Timed Out")
+			playAudio = False
+
+	timeOut(timer)
 
 
 	# FADE FUNCTION
@@ -54,6 +76,12 @@ while True:
 			if audioVolume > 0.0:
 				volume -= 0.01
 				print volume
+
+		# make sure volume stays in range
+		if volume > 1.0:
+			volume = 1.0:
+		if volume < 0.0:
+			volume = 0.0
 
 	fadeAudio()
 
@@ -72,7 +100,6 @@ while True:
 				print shake
 				print mixer.music.get_volume()
 				playAudio = not playAudio
-				#mixer.music.set_volume(volume)
 				print playAudio
 
 			if event.direction == 'up':
