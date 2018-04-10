@@ -14,7 +14,7 @@ shake = startvalue
 
 # init audio
 mixer.init()
-mixer.music.load('stream.mp3')
+mixer.music.load('crowd.mp3')
 mixer.music.play()
 
 playAudio = False
@@ -52,6 +52,7 @@ while True:
 
 
 
+
 	def change(event):
 		global shake
 		global volume
@@ -69,8 +70,13 @@ while True:
 			if event.direction == 'up':
 				shake += 0.01
 				print shake
+				volume += 0.1
+				print volume
 			elif event.direction == 'down':
 				shake -= 0.01
 				print shake
+				volume -= 0.1
+				print volume
 
 	sense.stick.direction_any = change
+	mixer.music.set_volume(volume)
