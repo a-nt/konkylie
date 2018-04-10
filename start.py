@@ -19,13 +19,10 @@ shake = startValue
 startVolume = 0.0
 volume = startVolume
 
-global timer
-timer = 0
-
 
 # init audio
 mixer.init()
-mixer.music.load('stream.mp3')
+mixer.music.load('/home/pi/Brutal/konkylie/stream.mp3')
 mixer.music.play(loops=-1, start=0.0)
 
 playAudio = False
@@ -48,20 +45,10 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		#timer = 2000
 
 	else:
 		sense.clear()
 		playAudio = False
-
-
-	# TIMER FUNCTION
-	while timer > 0:
-		print timer
-		timer = timer - 1
-		if timer == 0:
-			playAudio = False
-			print playAudio
 
 
 
