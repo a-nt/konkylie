@@ -7,8 +7,8 @@ sense = SenseHat()
 white = (255,255,255)
 black = (0,0,0)
 global shake
-shake = 0.1
-
+startvalue = 0.1
+shake = startvalue
 
 # init audio
 mixer.init()
@@ -37,7 +37,7 @@ while True:
 		global shake
 		if event.action == 'pressed':
 			if event.direction == 'middle':
-				shake = 0.1
+				shake = startvalue
 				print shake
 			if event.direction == 'up':
 				shake += 0.01
@@ -47,4 +47,3 @@ while True:
 				print shake
 
 	sense.stick.direction_any = change
-
