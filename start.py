@@ -33,6 +33,7 @@ playAudio = False
 
 while True:
 
+	#global playAudio
 
 	acceleration = sense.get_accelerometer_raw()
 	x = acceleration['x']
@@ -53,12 +54,12 @@ while True:
 
 
 	def timeOut(n):
-		global playAudio
+		#global playAudio
 		while n > 0:
 			print n
 			n = n - 1
 			if n == 0:
-			playAudio = False
+				playAudio = False
 
 	timeOut(timer)
 
