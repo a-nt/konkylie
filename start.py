@@ -80,7 +80,7 @@ while True:
 
 		# make sure volume stays in range
 		if volume > 1.0:
-			volume = 1.0:
+			volume = 1.0
 		if volume < 0.0:
 			volume = 0.0
 
