@@ -41,28 +41,26 @@ while True:
 
 
 
+	# FADE FUNCTION
 	def fadeAudio():
 		audioVolume = mixer.music.get_volume()
 		global volume
-		
-		# while playAudio:
-		# 	while audioVolume < 0.9:
-		# 		volume += 0.01
-		# while not playAudio:
-		# 	while audioVolume > 0.0:
-		# 		volume -= 0.01
 
 		if playAudio:
 			if audioVolume < 0.9:
 				volume += 0.01
+				print volume
 		elif not playAudio:
 			if audioVolume > 0.0:
 				volume -= 0.01
+				print volume
 
 	fadeAudio()
 
 
 
+
+	# JOYSTICK CHANGES
 
 	def change(event):
 		global shake
