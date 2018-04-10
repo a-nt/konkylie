@@ -8,6 +8,7 @@ white = (255,255,255)
 black = (0,0,0)
 global shake
 global volume
+global playAudio
 startvalue = 0.1
 shake = startvalue
 
@@ -54,6 +55,7 @@ while True:
 	def change(event):
 		global shake
 		global volume
+		global playAudio
 		if event.action == 'pressed':
 			if event.direction == 'middle':
 				shake = startvalue
