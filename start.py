@@ -11,6 +11,7 @@ global volume
 global playAudio
 startvalue = 0.1
 shake = startvalue
+volume = startvalue
 
 # init audio
 mixer.init()
