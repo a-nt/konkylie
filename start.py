@@ -13,7 +13,7 @@ shake = startvalue
 
 # init audio
 mixer.init()
-mixer.music.load('crowd-cheering.mp3')
+mixer.music.load('stream.mp3')
 mixer.music.play()
 
 playAudio = False
@@ -59,7 +59,7 @@ while True:
 				shake = startvalue
 				print shake
 				print mixer.music.get_volume()
-				volume = not volume
+				playAudio = not playAudio
 				fadeAudio()
 				mixer.music.set_volume(volume)
 
@@ -71,3 +71,4 @@ while True:
 				print shake
 
 	sense.stick.direction_any = change
+	print playAudio
