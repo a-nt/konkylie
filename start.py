@@ -1,6 +1,6 @@
 from sense_hat import SenseHat
 from pygame import mixer
-from threading
+import threading
 
 # init sense hat
 sense = SenseHat()
