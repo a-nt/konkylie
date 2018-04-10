@@ -36,8 +36,9 @@ while True:
 	# global timer
 	def stopAudio():
 		playAudio = False
-		print playAudio
+		#t.start()
 	t = threading.Timer(3.0, stopAudio)
+	t.start()
 
 	#global playAudio
 
@@ -58,7 +59,6 @@ while True:
 
 	else:
 		sense.clear()
-		t.start()
 
 
 	# FADE FUNCTION
