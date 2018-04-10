@@ -37,7 +37,7 @@ while True:
 	def stopAudio():
 		playAudio = False
 		print playAudio
-	t = Timer(3.0, stopAudio)
+	t = threading.Timer(3.0, stopAudio)
 
 	#global playAudio
 
