@@ -47,7 +47,7 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		timer = 100
+		timer = 200
 
 	else:
 		sense.clear()
