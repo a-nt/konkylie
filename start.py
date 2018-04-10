@@ -64,7 +64,7 @@ while True:
 				print shake
 				print mixer.music.get_volume()
 				playAudio = not playAudio
-				#fadeAudio()
+				fadeAudio()
 				#mixer.music.set_volume(volume)
 				print playAudio
 
