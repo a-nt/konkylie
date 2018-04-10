@@ -39,6 +39,18 @@ while True:
 
 
 
+	def fadeAudio():
+		audioVolume = mixer.music.get_volume()
+		global volume
+		while playAudio:
+			while audioVolume < 0.9:
+				volume += 0.01
+		while not playAudio:
+			while audioVolume > 0.0:
+				volume -= 0.01
+
+
+
 	def change(event):
 		global shake
 		global volume
@@ -48,6 +60,8 @@ while True:
 				print shake
 				print mixer.music.get_volume()
 				volume = not volume
+				fadeAudio()
+				mixer.music.set_volume(volume)
 
 			if event.direction == 'up':
 				shake += 0.01
@@ -57,17 +71,3 @@ while True:
 				print shake
 
 	sense.stick.direction_any = change
-
-	audioVolume = mixer.music.get_volume()
-
-	def fadeAudio():
-		global volume
-		while playAudio:
-			while audioVolume < 0.9:
-				volume += 0.01
-		while not playAudio:
-			while audioVolume > 0.0:
-				volume -= 0.01
-
-	fadeAudio()
-	mixer.music.set_volume(volume)
