@@ -33,12 +33,15 @@ while True:
 	else:
 		sense.clear()
 
+
+
 	def change(event):
 		global shake
 		if event.action == 'pressed':
 			if event.direction == 'middle':
 				shake = startvalue
 				print shake
+				print mixer.music.get_volume()
 			if event.direction == 'up':
 				shake += 0.01
 				print shake
