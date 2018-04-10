@@ -47,21 +47,10 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		timer = 2
+		timer = 3
 
 	else:
 		sense.clear()
-
-
-	def timeOut(n):
-		#global playAudio
-		while n > 0:
-			print n
-			n = n - 1
-			if n == 0:
-				playAudio = False
-
-	timeOut(timer)
 
 
 	# FADE FUNCTION
@@ -85,6 +74,15 @@ while True:
 			volume = 0.0
 
 	fadeAudio()
+
+
+	# TIMER
+	while timer > 0:
+		print timer
+		timer = timer - 1
+		if timer == 0:
+			playAudio = False
+			print playAudio
 
 
 
