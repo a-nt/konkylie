@@ -57,7 +57,6 @@ while True:
 			print n
 			n = n - 1
 			if n == 0:
-			print('Timed Out')
 			playAudio = False
 
 	timeOut(timer)
