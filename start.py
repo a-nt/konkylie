@@ -1,6 +1,5 @@
 from sense_hat import SenseHat
 from pygame import mixer
-import threading
 
 # init sense hat
 sense = SenseHat()
@@ -30,15 +29,6 @@ mixer.music.play(loops=-1, start=0.0)
 playAudio = False
 
 
-# global timer
-def stopAudio():
-	playAudio = False
-	#t.start()
-t = threading.Timer(3.0, stopAudio)
-t.start()
-
-
-
 # do shit
 
 while True:
@@ -57,12 +47,19 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		t.cancel()
-		#timer = 2000
+		timer = 2000
 
 	else:
 		sense.clear()
-		t.start()
+
+	# TIMER
+	while timer > 0:
+		print timer
+		timer = timer - 0.1
+		if timer == 0:
+			playAudio = False
+			print playAudio
+
 
 
 	# FADE FUNCTION
@@ -86,17 +83,6 @@ while True:
 			volume = 0.0
 
 	fadeAudio()
-
-
-	# TIMER
-	# while timer > 0:
-	# 	print timer
-	# 	timer = timer - 1
-	# 	if timer == 0:
-	# 		playAudio = False
-	# 		print playAudio
-
-
 
 
 
