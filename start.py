@@ -1,5 +1,6 @@
 from sense_hat import SenseHat
 from pygame import mixer
+import time
 
 # init sense hat
 sense = SenseHat()
@@ -21,6 +22,7 @@ volume = startVolume
 global timer
 timer = 0
 
+
 # init audio
 mixer.init()
 mixer.music.load('stream.mp3')
@@ -29,12 +31,11 @@ mixer.music.play(loops=-1, start=0.0)
 playAudio = False
 
 
-# do shit
+### LOOPING SHIT
 
 while True:
 
-	#global playAudio
-
+	# DETECT MOVEMENT
 	acceleration = sense.get_accelerometer_raw()
 	x = acceleration['x']
 	y = acceleration['y']
@@ -53,8 +54,17 @@ while True:
 		sense.clear()
 
 
+	# TIMER FUNCTION
+	while timer > 0:
+		print timer
+		timer = timer - 1
+		if timer == 0:
+			playAudio = False
+			print playAudio
 
-	# FADE FUNCTION
+
+
+	# FADE AUDIO
 	def fadeAudio():
 		audioVolume = mixer.music.get_volume()
 		global volume
@@ -80,39 +90,27 @@ while True:
 
 
 	# JOYSTICK CHANGES
-
 	def change(event):
 		global shake
 		global volume
 		global playAudio
 		if event.action == 'pressed':
+
 			if event.direction == 'middle':
 				shake = startValue
-				#print shake
-				#print mixer.music.get_volume()
+
 				playAudio = not playAudio
 				print playAudio
 
 			if event.direction == 'up':
 				shake += 0.01
 				print shake
-				#volume += 0.1
-				#print volume
+
 			elif event.direction == 'down':
 				shake -= 0.01
 				print shake
-				#volume -= 0.1
-				#print volume
+
 
 	sense.stick.direction_any = change
 	mixer.music.set_volume(volume)
-
-
-
-# TIMER
-while timer > 0:
-	print timer
-	timer = timer - 1
-	if timer == 0:
-		playAudio = False
-		print playAudio
+	time.sleep(0.1)
