@@ -20,7 +20,7 @@ startVolume = 0.0
 volume = startVolume
 
 global timer
-timer = 10
+timer = 0
 
 # init audio
 mixer.init()
@@ -47,7 +47,7 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		timer = 3
+		timer = 100
 
 	else:
 		sense.clear()
