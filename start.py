@@ -15,7 +15,7 @@ volume = startvalue
 
 # init audio
 mixer.init()
-mixer.music.load('crowd.mp3')
+mixer.music.load('stream.mp3')
 mixer.music.play(loops=-1, start=0.0)
 
 playAudio = False
