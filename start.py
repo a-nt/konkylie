@@ -47,7 +47,7 @@ while True:
 	if x > shake or y > shake or z > shake:
 		sense.show_letter("X", white)
 		playAudio = True
-		timer = 30
+		timer = 2
 
 	else:
 		sense.clear()
@@ -72,11 +72,11 @@ while True:
 		if playAudio:
 			if audioVolume < 0.9:
 				volume += 0.01
-				print volume
+				#print volume
 		elif not playAudio:
 			if audioVolume > 0.0:
 				volume -= 0.01
-				print volume
+				#print volume
 
 		# make sure volume stays in range
 		if volume > 1.0:
@@ -98,21 +98,21 @@ while True:
 		if event.action == 'pressed':
 			if event.direction == 'middle':
 				shake = startValue
-				print shake
-				print mixer.music.get_volume()
+				#print shake
+				#print mixer.music.get_volume()
 				playAudio = not playAudio
 				print playAudio
 
 			if event.direction == 'up':
 				shake += 0.01
 				print shake
-				volume += 0.1
-				print volume
+				#volume += 0.1
+				#print volume
 			elif event.direction == 'down':
 				shake -= 0.01
 				print shake
-				volume -= 0.1
-				print volume
+				#volume -= 0.1
+				#print volume
 
 	sense.stick.direction_any = change
 	mixer.music.set_volume(volume)
