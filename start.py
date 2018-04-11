@@ -1,6 +1,7 @@
 from sense_hat import SenseHat
 from pygame import mixer
 import time
+import vlc
 
 # init sense hat
 sense = SenseHat()
