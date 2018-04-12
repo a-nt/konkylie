@@ -89,11 +89,11 @@ while True:
 		if playAudio:
 			if audioVolume < 100:
 				volume += 1
-				#print volume
+
 		elif not playAudio:
 			if audioVolume > 0:
 				volume -= 0.1
-				#print volume
+
 
 		# make sure volume stays in range
 		if volume > 100:
@@ -130,6 +130,6 @@ while True:
 
 	sense.stick.direction_any = change
 	#mixer.music.set_volume(volume)
-	player.audio_set_volume(100)
-	print volume
+	player.audio_set_volume(90)
+	print abs(volume)
 	print player.audio_get_volume()
