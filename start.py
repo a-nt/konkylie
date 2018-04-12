@@ -22,7 +22,7 @@ volume = startVolume
 
 
 # init VLC
-url = 'http://uk6.internet-radio.com:8022/listen.pls'
+url = 'http://edge.mixlr.com/channel/elupc'
 
 #define VLC instance
 instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
