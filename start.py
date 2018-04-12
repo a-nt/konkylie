@@ -26,6 +26,7 @@ volume = startVolume
 ##
 
 global audioFileFallback
+global url
 audioFileFallback = False
 
 # url list
@@ -69,6 +70,20 @@ playAudio = False # DEFAULT STATE
 ## LOOPING SHIT
 
 while True:
+
+	def switchAudioSource():
+		global url
+		global audioFileFallback
+
+		player.stop()
+
+		if audioFileFallback:
+			url = 'stream.mp3'
+		else:
+			url = 'http://edge.mixlr.com/channel/elupc'
+
+		player.play()
+
 
 	# DETECT MOVEMENT
 	acceleration = sense.get_accelerometer_raw()
@@ -120,6 +135,7 @@ while True:
 		global shake
 		global volume
 		global playAudio
+		global audioFileFallback
 		if event.action == 'pressed':
 
 			if event.direction == 'middle':
@@ -129,6 +145,7 @@ while True:
 				#playAudio = not playAudio
 				audioFileFallback = not audioFileFallback
 				print audioFileFallback
+				switchAudioSource()
 
 			if event.direction == 'up':
 				shake += 0.01
