@@ -130,5 +130,6 @@ while True:
 
 	sense.stick.direction_any = change
 	#mixer.music.set_volume(volume)
-	player.audio_set_volume(abs(volume))
+	player.audio_set_volume(100)
 	print volume
+	print player.audio_get_volume()
