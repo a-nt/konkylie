@@ -1,5 +1,6 @@
 from sense_hat import SenseHat
 from pygame import mixer
+import vlc
 import time
 
 # init sense hat
@@ -18,6 +19,25 @@ shake = startValue
 
 startVolume = 0.0
 volume = startVolume
+
+
+# init VLC
+url = 'http://uk6.internet-radio.com:8022/listen.pls'
+
+#define VLC instance
+instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
+
+#Define VLC player
+player=instance.media_player_new()
+
+#Define VLC media
+media=instance.media_new(url)
+
+#Set player media
+player.set_media(media)
+
+#Play the media
+player.play()
 
 
 # init audio
