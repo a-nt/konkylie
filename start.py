@@ -25,25 +25,30 @@ volume = startVolume
 ## INIT STREAM (VLC)
 ##
 
-audioFileFallback = False
+global audioFileFallback = False
+
+
+def playAudioStream(url)
+
+	#define VLC instance
+	instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
+
+	#Define VLC player
+	player=instance.media_player_new()
+	media=instance.media_new(url)
+	player.set_media(media)
+
+	#Play the media
+	player.audio_set_volume(0)
+	player.play()
+
 
 if audioFileFallback:
-	url = 'stream.mp3'
+	playAudioStream('stream.mp3')
 else:
-	url = 'http://edge.mixlr.com/channel/elupc'
+	playAudioStream('http://edge.mixlr.com/channel/elupc')
 
 
-#define VLC instance
-instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
-
-#Define VLC player
-player=instance.media_player_new()
-media=instance.media_new(url)
-player.set_media(media)
-
-#Play the media
-player.audio_set_volume(0)
-player.play()
 
 
 
