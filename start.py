@@ -25,8 +25,13 @@ volume = startVolume
 ## INIT STREAM (VLC)
 ##
 
-#url = 'http://edge.mixlr.com/channel/elupc'
-url = 'stream.mp3'
+audioFileFallback = False
+
+if audioFileFallback:
+	url = 'stream.mp3'
+else:
+	url = 'http://edge.mixlr.com/channel/elupc'
+
 
 #define VLC instance
 instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
@@ -114,10 +119,12 @@ while True:
 		if event.action == 'pressed':
 
 			if event.direction == 'middle':
-				shake = startValue
 
-				playAudio = not playAudio
-				print playAudio
+				#shake = startValue
+
+				#playAudio = not playAudio
+				audioFileFallback = not audioFileFallback
+				print audioFileFallback
 
 			if event.direction == 'up':
 				shake += 0.01
@@ -131,3 +138,4 @@ while True:
 	sense.stick.direction_any = change
 	#mixer.music.set_volume(volume)
 	player.audio_set_volume(int(volume))
+	print player.audio_get_volume()
