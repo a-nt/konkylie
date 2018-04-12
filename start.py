@@ -37,7 +37,7 @@ media=instance.media_new(url)
 player.set_media(media)
 
 #Play the media
-player.audio_set_volume(volume)
+player.audio_set_volume(0)
 player.play()
 
 
@@ -130,6 +130,4 @@ while True:
 
 	sense.stick.direction_any = change
 	#mixer.music.set_volume(volume)
-	player.audio_set_volume(90)
-	print int(volume)
-	print player.audio_get_volume()
+	player.audio_set_volume(int(volume))
