@@ -1,6 +1,5 @@
 from sense_hat import SenseHat
 from pygame import mixer
-import vlc
 import time
 import vlc
 
@@ -39,6 +38,7 @@ player.set_media(media)
 
 #Play the media
 player.play()
+print player.audio_get_volume()
 
 
 # init audio
