@@ -25,7 +25,8 @@ volume = startVolume
 ## INIT STREAM (VLC)
 ##
 
-global audioFileFallback = False
+global audioFileFallback
+audioFileFallback = False
 
 
 def playAudioStream(url)
