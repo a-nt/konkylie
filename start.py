@@ -37,7 +37,7 @@ media=instance.media_new(url)
 player.set_media(media)
 
 #Play the media
-player.audio_set_volume(startValue)
+player.audio_set_volume(volume)
 player.play()
 
 
