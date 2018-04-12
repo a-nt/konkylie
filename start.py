@@ -1,5 +1,5 @@
 from sense_hat import SenseHat
-from pygame import mixer
+#from pygame import mixer
 import time
 import vlc
 
@@ -21,36 +21,43 @@ startVolume = 0.0
 volume = startVolume
 
 
-# init VLC
-url = 'http://edge.mixlr.com/channel/elupc'
+## ------------------------------------------
+## INIT STREAM (VLC)
+##
+
+#url = 'http://edge.mixlr.com/channel/elupc'
+url = 'stream.mp3'
 
 #define VLC instance
 instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
 
 #Define VLC player
 player=instance.media_player_new()
-
-#Define VLC media
 media=instance.media_new(url)
-
-#Set player media
 player.set_media(media)
 
-player.audio_set_volume(10)
 #Play the media
+player.audio_set_volume(startValue)
 player.play()
-print player.audio_get_volume()
 
 
-# init audio
-mixer.init()
-mixer.music.load('/home/pi/Brutal/konkylie/stream.mp3')
-mixer.music.play(loops=-1, start=0.0)
 
-playAudio = False
+## ------------------------------------------
+## INIT FILE AUDIO
+##
+
+#	mixer.init()
+#	mixer.music.load('/home/pi/Brutal/konkylie/stream.mp3')
+#	mixer.music.play(loops=-1, start=0.0)
+
+## ------------------------------------------
 
 
-### LOOPING SHIT
+
+playAudio = False # DEFAULT STATE
+
+
+## LOOPING SHIT
 
 while True:
 
@@ -76,23 +83,23 @@ while True:
 
 	# FADE AUDIO
 	def fadeAudio():
-		audioVolume = mixer.music.get_volume()
+		audioVolume = player.audio_get_volume()
 		global volume
 
 		if playAudio:
-			if audioVolume < 0.9:
-				volume += 0.01
+			if audioVolume < 100:
+				volume += 1
 				#print volume
 		elif not playAudio:
-			if audioVolume > 0.0:
-				volume -= 0.001
+			if audioVolume > 0:
+				volume -= 0.1
 				#print volume
 
 		# make sure volume stays in range
-		if volume > 1.0:
-			volume = 1.0
-		if volume < 0.0:
-			volume = 0.0
+		if volume > 100:
+			volume = 100
+		if volume < 0:
+			volume = 0
 
 	fadeAudio()
 
@@ -122,4 +129,5 @@ while True:
 
 
 	sense.stick.direction_any = change
-	mixer.music.set_volume(volume)
+	#mixer.music.set_volume(volume)
+	player.audio_set_volume(volume)
