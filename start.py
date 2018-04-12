@@ -29,7 +29,7 @@ global audioFileFallback
 audioFileFallback = False
 
 
-def playAudioStream(url)
+def playAudioStream(url):
 
 	#define VLC instance
 	instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
