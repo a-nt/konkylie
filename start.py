@@ -17,7 +17,7 @@ global playAudio
 startValue = 0.5
 shake = startValue
 
-startVolume = 0.0
+startVolume = 50
 volume = startVolume
 
 
