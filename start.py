@@ -27,6 +27,10 @@ volume = startVolume
 
 global audioFileFallback
 global url
+global instance
+global player
+global media
+
 audioFileFallback = False
 
 # url list
@@ -72,8 +76,11 @@ playAudio = False # DEFAULT STATE
 while True:
 
 	def switchAudioSource():
-		global url
 		global audioFileFallback
+		global url
+		global instance
+		global player
+		global media
 
 		player.stop()
 
@@ -81,6 +88,14 @@ while True:
 			url = 'stream.mp3'
 		else:
 			url = 'http://edge.mixlr.com/channel/elupc'
+
+		#define VLC instance
+		instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
+
+		#Define VLC player
+		player=instance.media_player_new()
+		media=instance.media_new(url)
+		player.set_media(media)
 
 		player.play()
 
