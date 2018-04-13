@@ -85,9 +85,9 @@ while True:
 		player.stop()
 
 		if activateStream:
-			url = 'stream.mp3'
-		else:
 			url = 'http://edge.mixlr.com/channel/elupc'
+		else:
+			url = 'stream.mp3'
 
 		#define VLC instance
 		instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
