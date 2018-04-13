@@ -25,19 +25,19 @@ volume = startVolume
 ## INIT STREAM (VLC)
 ##
 
-global audioFileFallback
+global activateStream
 global url
 global instance
 global player
 global media
 
-audioFileFallback = False
+activateStream = False
 
 # url list
-if audioFileFallback:
-	url = 'stream.mp3'
-else:
+if activateStream:
 	url = 'http://edge.mixlr.com/channel/elupc'
+else:
+	url = 'stream.mp3'
 
 #define VLC instance
 instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
@@ -76,7 +76,7 @@ playAudio = False # DEFAULT STATE
 while True:
 
 	def switchAudioSource():
-		global audioFileFallback
+		global activateStream
 		global url
 		global instance
 		global player
@@ -84,7 +84,7 @@ while True:
 
 		player.stop()
 
-		if audioFileFallback:
+		if activateStream:
 			url = 'stream.mp3'
 		else:
 			url = 'http://edge.mixlr.com/channel/elupc'
@@ -150,7 +150,7 @@ while True:
 		global shake
 		global volume
 		global playAudio
-		global audioFileFallback
+		global activateStream
 		if event.action == 'pressed':
 
 			if event.direction == 'middle':
@@ -158,8 +158,8 @@ while True:
 				#shake = startValue
 
 				#playAudio = not playAudio
-				audioFileFallback = not audioFileFallback
-				print audioFileFallback
+				activateStream = not activateStream
+				print activateStream
 				switchAudioSource()
 
 			if event.direction == 'up':
