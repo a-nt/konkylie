@@ -63,7 +63,7 @@ mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
 mixer.music.play()
 
 def stayAlive():
-  threading.Timer(300.0, printit).start()
+  threading.Timer(300.0, stayAlive).start()
   mixer.music.play()
 
 stayAlive()
