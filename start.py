@@ -1,6 +1,6 @@
 from sense_hat import SenseHat
 from pygame import mixer
-import time
+import sched, time
 import vlc
 
 # init sense hat
@@ -61,8 +61,18 @@ player.play()
 ##
 
 mixer.init()
-mixer.music.load('/home/pi/Brutal/konkylie/crowd.mp3')
+mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
 mixer.music.play()
+
+s = sched.scheduler(time.time, time.sleep)
+def do_something(sc):
+    print "Doing stuff..."
+    # do your stuff
+    s.enter(60, 1, mixer.music.play(), (sc,))
+
+s.enter(60, 1, mixer.music.play(), (s,))
+s.run()
+
 
 ## ------------------------------------------
 
