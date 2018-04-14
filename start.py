@@ -54,9 +54,6 @@ player.play()
 
 
 
-
-
-
 ## ------------------------------------------
 ## INIT FILE AUDIO TO STAY ALIVE
 ##
@@ -65,11 +62,11 @@ mixer.init()
 mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
 mixer.music.play()
 
-def printit():
-  threading.Timer(60.0, printit).start()
-  print "Hello, World!"
+def stayAlive():
+  threading.Timer(300.0, printit).start()
+  mixer.music.play()
 
-printit()
+stayAlive()
 
 ## ------------------------------------------
 
@@ -78,7 +75,11 @@ printit()
 playAudio = False # DEFAULT STATE
 
 
+
+## ------------------------------------------
 ## LOOPING SHIT
+##
+
 
 while True:
 
@@ -162,15 +163,9 @@ while True:
 		if event.action == 'pressed':
 
 			if event.direction == 'middle':
-
-				#shake = startValue
-
-				#playAudio = not playAudio
 				activateStream = not activateStream
 				print activateStream
 				switchAudioSource()
-
-				mixer.music.play()
 
 			if event.direction == 'up':
 				#shake += 0.01
@@ -182,6 +177,5 @@ while True:
 
 
 	sense.stick.direction_any = change
-	#mixer.music.set_volume(volume)
 	player.audio_set_volume(int(volume))
 	print player.audio_get_volume()
