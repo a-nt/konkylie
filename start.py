@@ -61,8 +61,8 @@ player.play()
 ##
 
 	mixer.init()
-	mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
-#	mixer.music.play(loops=-1, start=0.0) # uendelig
+	mixer.music.load('/home/pi/Brutal/konkylie/crowd.mp3')
+	mixer.music.play()
 
 ## ------------------------------------------
 
