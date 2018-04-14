@@ -60,9 +60,9 @@ player.play()
 ## INIT FILE AUDIO TO STAY ALIVE
 ##
 
-	mixer.init()
-	mixer.music.load('/home/pi/Brutal/konkylie/crowd.mp3')
-	mixer.music.play()
+mixer.init()
+mixer.music.load('/home/pi/Brutal/konkylie/crowd.mp3')
+mixer.music.play()
 
 ## ------------------------------------------
 
