@@ -1,5 +1,5 @@
 from sense_hat import SenseHat
-#from pygame import mixer
+from pygame import mixer
 import time
 import vlc
 
@@ -57,12 +57,12 @@ player.play()
 
 
 ## ------------------------------------------
-## INIT FILE AUDIO
+## INIT FILE AUDIO TO STAY ALIVE
 ##
 
-#	mixer.init()
-#	mixer.music.load('/home/pi/Brutal/konkylie/stream.mp3')
-#	mixer.music.play(loops=-1, start=0.0)
+	mixer.init()
+	mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
+#	mixer.music.play(loops=-1, start=0.0) # uendelig
 
 ## ------------------------------------------
 
@@ -162,12 +162,14 @@ while True:
 				print activateStream
 				switchAudioSource()
 
+				mixer.music.play()
+
 			if event.direction == 'up':
-				shake += 0.01
+				#shake += 0.01
 				print shake
 
 			elif event.direction == 'down':
-				shake -= 0.01
+				#shake -= 0.01
 				print shake
 
 
