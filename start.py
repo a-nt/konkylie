@@ -59,7 +59,7 @@ player.play()
 ##
 
 mixer.init()
-mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
+mixer.music.load('/home/pi/Brutal/konkylie/sine.wav')
 mixer.music.play()
 
 def stayAlive():
