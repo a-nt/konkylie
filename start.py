@@ -162,19 +162,19 @@ while True:
 		global activateStream
 		if event.action == 'pressed':
 
-			if event.direction == 'middle':
+			#if event.direction == 'middle':
 
 			if event.direction == 'up':
+				activateStream = not activateStream
+				#print activateStream
+				switchAudioSource()
+
 				#shake += 0.01
 				#print shake
 
-				activateStream = not activateStream
-				print activateStream
-				switchAudioSource()
-
 			elif event.direction == 'down':
 				#shake -= 0.01
-				#print shake
+				print shake
 
 
 	sense.stick.direction_any = change
