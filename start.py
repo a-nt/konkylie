@@ -66,9 +66,10 @@ mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
 mixer.music.play()
 
 def printit():
-  threading.Timer(5.0, printit).start()
+  threading.Timer(60.0, printit).start()
   print "Hello, World!"
 
+printit()
 
 ## ------------------------------------------
 
@@ -80,8 +81,6 @@ playAudio = False # DEFAULT STATE
 ## LOOPING SHIT
 
 while True:
-
-	printit()
 
 
 	def switchAudioSource():
