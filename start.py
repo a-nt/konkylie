@@ -1,6 +1,6 @@
 from sense_hat import SenseHat
 from pygame import mixer
-import sched, time
+import time
 import vlc
 
 # init sense hat
@@ -64,14 +64,9 @@ mixer.init()
 mixer.music.load('/home/pi/Brutal/konkylie/activate.mp3')
 mixer.music.play()
 
-s = sched.scheduler(time.time, time.sleep)
-def do_something(sc):
-    print "Doing stuff..."
-    # do your stuff
-    s.enter(60, 1, mixer.music.play(), (sc,))
-
-s.enter(60, 1, mixer.music.play(), (s,))
-s.run()
+def preventSleep():
+	mixer.music.play()
+	time.sleep(60)
 
 
 ## ------------------------------------------
@@ -84,6 +79,9 @@ playAudio = False # DEFAULT STATE
 ## LOOPING SHIT
 
 while True:
+
+	preventSleep()
+
 
 	def switchAudioSource():
 		global activateStream
