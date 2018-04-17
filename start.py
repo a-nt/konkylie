@@ -38,7 +38,7 @@ activateStream = False
 if activateStream:
 	url = 'http://edge.mixlr.com/channel/elupc'
 else:
-	url = '/home/pi/Brutal/konkylie/rain.mp3'
+	url = '/home/pi/Brutal/konkylie/birds.mp3'
 
 #define VLC instance
 instance = vlc.Instance('--input-repeat=-999999', '--fullscreen')
@@ -96,7 +96,7 @@ while True:
 		if activateStream:
 			url = 'http://edge.mixlr.com/channel/elupc'
 		else:
-			url = '/home/pi/Brutal/konkylie/rain.mp3'
+			url = '/home/pi/Brutal/konkylie/birds.mp3'
 
 		#define VLC instance
 		instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
