@@ -38,10 +38,10 @@ activateStream = False
 if activateStream:
 	url = 'http://edge.mixlr.com/channel/elupc'
 else:
-	url = '/home/pi/Brutal/konkylie/stream.mp3'
+	url = '/home/pi/Brutal/konkylie/rain.mp3'
 
 #define VLC instance
-instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
+instance = vlc.Instance('--input-repeat=-999999', '--fullscreen')
 
 #Define VLC player
 player=instance.media_player_new()
@@ -96,7 +96,7 @@ while True:
 		if activateStream:
 			url = 'http://edge.mixlr.com/channel/elupc'
 		else:
-			url = '/home/pi/Brutal/konkylie/stream.mp3'
+			url = '/home/pi/Brutal/konkylie/rain.mp3'
 
 		#define VLC instance
 		instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
@@ -162,15 +162,18 @@ while True:
 		global activateStream
 		if event.action == 'pressed':
 
-			#if event.direction == 'middle':
-
-			if event.direction == 'up':
+			if event.direction == 'middle':
 				activateStream = not activateStream
 				#print activateStream
 				switchAudioSource()
 
+			if event.direction == 'up':
+				#activateStream = not activateStream
+				#print activateStream
+				#switchAudioSource()
+
 				#shake += 0.01
-				#print shake
+				print shake
 
 			elif event.direction == 'down':
 				#shake -= 0.01
